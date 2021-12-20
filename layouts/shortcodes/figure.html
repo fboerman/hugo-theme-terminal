@@ -1,8 +1,14 @@
 {{ if .Get "src" }}
+  {{ if .Get "clickable" }}
+  <a href="{{ .Get "src" | safeURL }}" target="_blank" rel="noopener noreferrer" >
+  {{ end }}
   <figure class="{{ with .Get "position"}}{{ . }}{{ else -}} left {{- end }}" >
     <img src="{{ .Get "src" | safeURL }}" {{ with .Get "alt" }} alt="{{ . | plainify }}" {{ end }} {{ with .Get "style" }} style="{{ . | safeCSS }}" {{ end }} />
     {{ if .Get "caption" }}
       <figcaption class="{{ with .Get "captionPosition"}}{{ . }}{{ else -}} center {{- end }}" {{ with .Get "captionStyle" }} style="{{ . | safeCSS }}" {{ end }}>{{ .Get "caption" | safeHTML }}</figcaption>
     {{ end }}
   </figure>
+  {{ if .Get "clickable" }}
+  <a/>
+  {{ end }}
 {{ end }}
